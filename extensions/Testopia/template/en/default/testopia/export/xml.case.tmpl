@@ -22,7 +22,7 @@
 
 [% PROCESS global/variables.none.tmpl %]
 
-    <testcase author="[% case.author.email FILTER xml %]" priority="[% case.priority FILTER xml %]" automated="[% case.isautomated ? "Automatic" : "Manual" FILTER xml %]" status="[% case.status FILTER xml %]">
+    <testcase author="[% case.author.email FILTER xml %]" priority="[% case.priority FILTER xml %]" automated="[% case.isautomated FILTER xml %]" status="[% case.status FILTER xml %]">
 [% IF case.text.action %]
         <action>[% case.text.action FILTER replace('<','&testopia_lt;') FILTER replace('>','&testopia_gt;') %]</action>
 [% END %]

@@ -55,7 +55,7 @@
         [% CASE 'expected_results' %]
             [% case.text.effect FILTER csv %]
         [% CASE 'isautomated' %]
-            [% case.isautomated ? "YES" : "NO" FILTER csv %]
+            [% case.isautomated FILTER csv %]
         [% CASE 'plans' %]
             [% FILTER csv %]
                 [% FOREACH plan = case.plans %]
