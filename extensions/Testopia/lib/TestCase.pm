@@ -770,7 +770,7 @@ sub get_isautomated_list {
             'name' => 'Not Automatable'
         }
     ];
-    return $ref
+    return $ref;
 }
 
 =head2 get_status_list
