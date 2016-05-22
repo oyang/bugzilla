@@ -47,7 +47,7 @@
             <tr:creation_date>[% case.creation_date.replace(' ','T') FILTER xml %]</tr:creation_date>
             <tr:last_changed>[% case.last_changed.replace(' ','T') FILTER xml %]</tr:last_changed>
             <tr:estimated_time>[% case.estimated_time FILTER xml %]</tr:estimated_time>
-            <tr:isautomated>[% case.isautomated ? 'true' : 'false' FILTER xml %]</tr:isautomated>
+            <tr:isautomated>[% case.isautomated FILTER xml %]</tr:isautomated>
             <tr:script>[% case.sortkey FILTER xml %]</tr:script>
             <tr:arguments>[% case.arguments FILTER xml %]</tr:arguments>
             <tr:sortkey>[% case.sortkey || 0 FILTER xml %]</tr:sortkey>            
