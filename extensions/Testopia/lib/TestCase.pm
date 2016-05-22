@@ -741,6 +741,38 @@ sub get_product_ids {
     return $ref;
 }
 
+=head2 get_isautomated_list
+
+Returns the list of legal statuses for a test case
+
+=cut
+
+sub get_isautomated_list {
+    my $ref = [
+        {
+            'id' => '0',
+            'name' => 'Manual'
+        },
+        {
+            'id' => '1',
+            'name' => 'Automated'
+        },
+        {
+            'id' => '2',
+            'name' => 'In Progress'
+        },
+        {
+            'id' => '3',
+            'name' => 'Blocked'
+        },
+        {
+            'id' => '4',
+            'name' => 'Not Automatable'
+        }
+    ];
+    return $ref
+}
+
 =head2 get_status_list
 
 Returns the list of legal statuses for a test case
