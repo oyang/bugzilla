@@ -62,7 +62,7 @@ if ($action eq 'edit'){
     $case->set_category($cgi->param('category')) if $cgi->param('category');
     $case->set_case_status($cgi->param('status')) if $cgi->param('status');
     $case->set_priority($cgi->param('priority')) if $cgi->param('priority');
-    $case->set_isautomated($cgi->param('isautomated') eq 'on' ? 1 : 0) if $cgi->param('isautomated');
+    $case->set_isautomated($cgi->param('isautomated')) if $cgi->param('isautomated');
     $case->set_script($cgi->param('script')) if exists $cgi->{param}->{'script'} || exists $cgi->{'script'};
     $case->set_arguments($cgi->param('arguments')) if exists $cgi->{param}->{'arguments'} || exists $cgi->{'arguments'};    
     $case->set_summary($cgi->param('summary')) if $cgi->param('summary');

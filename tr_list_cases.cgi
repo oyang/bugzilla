@@ -107,7 +107,7 @@ if ($action eq 'update'){
         $case->set_requirement($cgi->param('requirement')) if $cgi->param('requirement');
         $case->set_case_status($cgi->param('status')) if $cgi->param('status');
         $case->set_priority($cgi->param('priority')) if $cgi->param('priority');
-        $case->set_isautomated($cgi->param('isautomated') eq 'on' ? 1 : 0) if $cgi->param('isautomated');
+        $case->set_isautomated($cgi->param('isautomated')) if $cgi->param('isautomated');
         $case->set_script($cgi->param('script')) if $cgi->param('script');
         $case->set_arguments($cgi->param('arguments')) if $cgi->param('arguments');
         $case->set_category($cgi->param('category')) if $cgi->param('category');    
