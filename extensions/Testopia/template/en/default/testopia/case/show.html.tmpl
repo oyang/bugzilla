@@ -406,26 +406,52 @@ Ext.onReady(function(){
                         var params = Ext.getCmp('case_automation_frm').getForm().getValues();
                         params.case_id = tcase.case_id;
                         params.action = 'edit';
-                        params.isautomated = params['ncf-automated-checkbox'] == 'on' ? 'on' : 'off';
                         testopia_form.submit({
                             url: 'tr_process_case.cgi',
                             params: params,
-                            success: function(){
+                            success: function(form, action){
+                                var isautomated_key_val = {
+                                    '0' : 'Manual',
+                                    '1' : 'Automated',
+                                    '2' : 'In Progress',
+                                    '3' : 'Blocked',
+                                    '4' : 'Not Automatable'
+                                };
+                                Ext.get('isautomatedDisplay').update(isautomated_key_val[action.result.tcase.isautomated]);
                                 Testopia.Util.notify.msg('Test case updated', 'Test Case {0} was updated successfully', 'automation');
                             },
                             failure: Testopia.Util.error
                         });
                     }
                 }],
-                items: [{
-                    xtype: 'fieldset',
-                    autoHeight: true,
-                    checkboxToggle: true,
-                    title: 'Automated',
-                    id: 'ncf-automated',
-                    checkBoxName: 'isautomated',
-                    collapsed: tcase.isautomated == 1 ? false : true,
-                    items: [{
+                items: [
+                    new Ext.form.ComboBox({
+                          fieldLabel: 'Automation',
+                          name: 'isautomated',
+                          typeAhead: true,
+                          triggerAction: 'all',
+                          lazyRender:true,
+                          mode: 'local',
+                          value: tcase.isautomated,
+                          store: new Ext.data.ArrayStore({
+                                      fields: [
+                                              'id',
+                                              'displayLabel'
+                                      ],
+                                      data: [
+                                              [ 0, 'Manual'],
+                                              [ 1, 'Automated'],
+                                              [ 2, 'In Progress'],
+                                              [ 3, 'Blocked'],
+                                              [ 4, 'Not Automatable']
+                                      ]
+                              }),
+                              hiddenName: 'isautomated',
+                              hiddenValue: tcase.isautomated,
+                              valueField: 'id',
+                              displayField: 'displayLabel'
+                    }),{
+
                         xtype:'textarea',
                         fieldLabel: 'Scripts',
                         id:'ncf-scripts',
@@ -439,15 +465,14 @@ Ext.onReady(function(){
                         id:'ncf-arguments',
                         name: 'arguments',
                         value: tcase.arguments,
-			   width : 500
+                        width : 500
                     },{
                         xtype:'textfield',
                         fieldLabel: 'Alias',
                         id:'case_alias',
                         name: 'alias',
                         value: tcase.alias,
-			   width : 500
-                    }]
+                        width : 500
                 }]
             }]
         },{
@@ -671,7 +696,7 @@ Ext.get('case_overview').show();
           </tr>
         </table>
       </td>
-      <td>[% case.isautomated ? "YES" : "NO" FILTER html %]</td>
+      <td id="isautomatedDisplay">[% case.get_isautomated_value(case.isautomated) FILTER html %]</td>
     </tr>
     <tr class="bz_row_header">
       <th>Category</th>
