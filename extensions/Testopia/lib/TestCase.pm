@@ -235,7 +235,7 @@ sub _check_author{
 sub _check_automated{
     my ($invocant, $isactive) = @_;
     $isactive = trim($isactive);
-    ThrowCodeError('bad_arg', {argument => 'isautomated', function => 'set_automated'}) unless ($isactive =~ /(1|0)/);
+    ThrowCodeError('bad_arg', {argument => 'isautomated', function => 'set_automated'}) unless ($isactive =~ /(l|0|2|3|4)/);
     return $isactive;
 }
 
@@ -739,6 +739,29 @@ sub get_product_ids {
               WHERE cases.case_id = ?
               ORDER BY products.id", undef, $self->{'case_id'});
     return $ref;
+}
+
+=head2 get_isautomated_value
+
+Returns the list of legal statuses for a test case
+
+=cut
+
+sub get_isautomated_value {
+    my $self = shift;
+    my ($id) = @_;
+    my $ref = {
+        '0' => 'Manual',
+        '1' => 'Automated',
+        '2' => 'In Progress',
+        '3' => 'Blocked',
+        '4' => 'Not Automatable'
+    };
+    my $val = $ref->{$id};
+
+    ThrowCodeError('bad_arg', {argument => 'isautomated', function => 'set_automated'}) unless (defined $val);
+
+    return $val;
 }
 
 =head2 get_isautomated_list
