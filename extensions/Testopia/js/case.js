@@ -1153,13 +1153,33 @@ Testopia.TestCase.NewCaseForm = function(plan_ids, product_id, run_id){
                     fieldLabel: 'Requirements',
                     id: 'ncf-reqs',
                     name: 'requirement'
-                }, {
-                    xtype: 'checkbox',
-                    fieldLabel: 'Automated',
-                    id: 'ncf-automated',
-                    name: 'isautomated',
-                    value: '1'
-                }, {
+                }, 
+                new Ext.form.ComboBox({
+                      fieldLabel: 'Automation',
+                      name: 'isautomated',
+                      typeAhead: true,
+                      triggerAction: 'all',
+                      lazyRender:true,
+                      mode: 'local',
+                      value: "0",
+                      store: new Ext.data.ArrayStore({
+                                  fields: [
+                                          'id',
+                                          'displayLabel'
+                                  ],
+                                  data: [
+                                          [ 0, 'Manual'],
+                                          [ 1, 'Automated'],
+                                          [ 2, 'In Progress'],
+                                          [ 3, 'Blocked'],
+                                          [ 4, 'Not Automatable']
+                                  ]
+                          }),
+                      hiddenName: 'isautomated',
+                      hiddenValue: "0",
+                      valueField: 'id',
+                      displayField: 'displayLabel'
+                }),{
                     xtype: 'textfield',
                     fieldLabel: 'Scripts',
                     id: 'ncf-scripts',

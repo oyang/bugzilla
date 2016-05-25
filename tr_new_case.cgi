@@ -109,7 +109,7 @@ if ($action eq 'add'){
             'case_status_id' => $cgi->param('status') || '',
             'category_id'    => $cgi->param('category') || '',
             'priority_id'    => $cgi->param('priority') || '',
-            'isautomated'    => $cgi->param("isautomated") || '',
+            'isautomated'    => $cgi->param("isautomated"),
             'estimated_time' => $cgi->param("estimated_time") || '',
             'script'         => $cgi->param("script") || '',
             'arguments'      => $cgi->param("arguments") || '',
