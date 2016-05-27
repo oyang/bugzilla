@@ -235,7 +235,7 @@ sub _check_author{
 sub _check_automated{
     my ($invocant, $isactive) = @_;
     $isactive = trim($isactive);
-    ThrowCodeError('bad_arg', {argument => 'isautomated', function => 'set_automated'}) unless ($isactive =~ /(l|0|2|3|4)/);
+    ThrowCodeError('bad_arg', {argument => 'isautomated', function => 'set_automated'}) unless ($isactive =~ /(\d)/);
     return $isactive;
 }
 
