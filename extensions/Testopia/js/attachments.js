@@ -102,7 +102,7 @@ Testopia.Attachment.Grid = function(object){
             xtype: 'textfield'
         },
         sortable: true,
-        dataIndex: 'name'
+        dataIndex: 'filename'
     }, {
         header: "Submitted by",
         width: 50,
