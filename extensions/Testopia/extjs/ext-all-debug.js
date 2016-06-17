@@ -41842,6 +41842,7 @@ Ext.form.HtmlEditor = Ext.extend(Ext.form.Field, {
                 doc,
                 fn;
 
+            ss['font-size'] = '18px'; 
             ss['background-attachment'] = 'fixed'; 
             dbody.bgProperties = 'fixed'; 
 
