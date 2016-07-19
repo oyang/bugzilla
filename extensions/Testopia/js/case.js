@@ -397,7 +397,8 @@ Testopia.TestCase.Grid = function(params, cfg){
             allowDecimals: false,
             allowNegative: false
         },
-        id: "sortkey"
+        id: "sortkey",
+        hidden: true
     }, {
         header: "Summary",
         width: 220,
@@ -410,10 +411,10 @@ Testopia.TestCase.Grid = function(params, cfg){
         }
     }, {
         header: "Author",
-        width: 150,
+        width: 100,
         sortable: true,
         dataIndex: 'author',
-        hidden: true
+        hidden: false
     }, {
         header: "Default Tester",
         width: 150,
@@ -422,7 +423,8 @@ Testopia.TestCase.Grid = function(params, cfg){
         editor: new Testopia.User.Lookup({
             hiddenName: 'tester'
         }),
-        renderer: Testopia.Util.ComboRenderer.createDelegate(this)
+        renderer: Testopia.Util.ComboRenderer.createDelegate(this),
+        hidden: true
     }, {
         header: "Created",
         width: 110,
@@ -451,7 +453,8 @@ Testopia.TestCase.Grid = function(params, cfg){
         sortable: true,
         dataIndex: 'category',
         editor: categoryCombo,
-        renderer: Testopia.Util.ComboRenderer.createDelegate(this)
+        renderer: Testopia.Util.ComboRenderer.createDelegate(this),
+        hidden: true
     }, {
         header: "Component",
         width: 110,
@@ -466,10 +469,10 @@ Testopia.TestCase.Grid = function(params, cfg){
         renderer: Testopia.Util.ComboRenderer.createDelegate(this)
     }, {
         header: "Requirement",
-        width: 40,
+        width: 100,
         sortable: true,
         dataIndex: 'requirement',
-        hidden: true,
+        hidden: false,
         editor: {
             xtype: 'textfield',
             name: 'requirement'
