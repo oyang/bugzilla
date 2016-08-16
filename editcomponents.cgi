@@ -211,7 +211,7 @@ if ($action eq 'update') {
 
     my $comp_old_name         = trim($cgi->param('componentold')     || '');
     my $default_assignee      = trim($cgi->param('initialowner')     || '');
-    my $default_qa_contact    = trim($cgi->param('initialqacontact') || '');
+    my $default_qa_contact    = trim($cgi->param('initialqacontact') || $default_assignee || '');
     my $description           = trim($cgi->param('description')      || '');
     my @initial_cc            = $cgi->param('initialcc');
     my $isactive              = $cgi->param('isactive');

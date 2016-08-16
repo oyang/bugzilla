@@ -213,7 +213,7 @@ sub _check_initialqacontact {
         $qa_contact_id = Bugzilla::User->check($qa_contact)->id if $qa_contact;
     }
     elsif (ref $invocant) {
-        $qa_contact_id = $invocant->{initialqacontact};
+        $qa_contact_id = $invocant->{initialqacontact} || Bugzilla::User->check($qa_contact)->id;
     }
     return $qa_contact_id;
 }
